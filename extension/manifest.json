@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "ChatAssist",
+  "version": "1.0.0",
+  "description": "AI-powered chat suggestions for social media.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": [
+    "*://*.facebook.com/*",
+    "*://*.twitter.com/*",
+    "*://web.whatsapp.com/*",
+    "*://web.wechat.com/*",
+    "*://*.instagram.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.facebook.com/*",
+        "*://*.twitter.com/*",
+        "*://web.whatsapp.com/*",
+        "*://web.wechat.com/*",
+        "*://*.instagram.com/*"
+      ],
+      "js": ["src/contentScript.js"]
+    }
+  ]
+}
